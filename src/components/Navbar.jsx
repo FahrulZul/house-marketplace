@@ -16,8 +16,8 @@ function Navbar() {
             <div
                 className={`flex flex-col w-14 duration-300 py-3 ${
                     pathMatchRoute("/")
-                        ? "text-neutral-900 border-t-2 border-neutral-900"
-                        : "text-neutral-400 border-t-2 border-white"
+                        ? "text-gray-900 border-t-2 border-gray-900"
+                        : "text-gray-400 border-t-2 border-white"
                 }`}
                 onClick={() => navigate("/")}
             >
@@ -29,8 +29,8 @@ function Navbar() {
             <div
                 className={`flex flex-col w-14 duration-300 py-3 ${
                     pathMatchRoute("/offers")
-                        ? "text-neutral-900 border-t-2 border-neutral-900"
-                        : "text-neutral-400 border-t-2 border-white"
+                        ? "text-gray-900 border-t-2 border-gray-900"
+                        : "text-gray-400 border-t-2 border-white"
                 }`}
                 onClick={() => navigate("/offers")}
             >
@@ -42,8 +42,8 @@ function Navbar() {
             <div
                 className={`flex flex-col w-14 duration-300 py-3 ${
                     pathMatchRoute("/profile")
-                        ? "text-neutral-900 border-t-2 border-neutral-900"
-                        : "text-neutral-400 border-t-2 border-white"
+                        ? "text-gray-900 border-t-2 border-gray-900"
+                        : "text-gray-400 border-t-2 border-white"
                 }`}
                 onClick={() => navigate("/profile")}
             >
