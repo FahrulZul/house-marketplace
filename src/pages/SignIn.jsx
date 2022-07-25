@@ -44,14 +44,14 @@ function SignIn() {
 
     return (
         <div className="bg-white rounded-2xl ">
-            <h1 className="text-gray-900 text-2xl font-bold mb-10">Login</h1>
+            <h1 className="text-gray-900 text-3xl font-bold mb-10">Login</h1>
 
             <form className="mb-6" onSubmit={onSubmit}>
                 <div className="flex items-start mb-5">
                     <FiAtSign size={20} className="text-gray-400 mr-4" />
                     <div className="flex flex-1 items-center border-b border-gray-200 pb-2">
                         <input
-                            className="text-sm focus:outline-none"
+                            className="w-full text-sm bg-white focus:outline-none"
                             type="email"
                             id="email"
                             value={email}
@@ -65,7 +65,7 @@ function SignIn() {
                     <FiLock size={20} className="text-gray-400 mr-4" />
                     <div className="flex flex-1 items-center border-b border-gray-200 pb-2">
                         <input
-                            className="flex-1 text-sm focus:outline-none"
+                            className="w-full flex-1 text-sm focus:outline-none"
                             type={showPassword ? "text" : "password"}
                             id="password"
                             value={password}

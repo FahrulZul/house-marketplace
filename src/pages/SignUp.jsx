@@ -40,9 +40,9 @@ function SignUp() {
             );
             const user = userCredential.user;
 
-            updateProfile(auth.currentUser, {
-                displayName: name,
-            });
+            // await updateProfile(auth.currentUser, {
+            //     displayName: name,
+            // });
 
             const formDataCopy = { ...formData };
             delete formDataCopy.password;
@@ -60,14 +60,14 @@ function SignUp() {
 
     return (
         <div className="bg-white rounded-2xl ">
-            <h1 className="text-gray-900 text-2xl font-bold mb-10">Sign up</h1>
+            <h1 className="text-gray-900 text-3xl font-bold mb-10">Sign up</h1>
 
             <form className="mb-10" onSubmit={onSubmit}>
                 <div className="flex items-start mb-5">
                     <FiAtSign size={20} className="text-gray-400 mr-4" />
                     <div className="flex flex-1 items-center border-b border-gray-200 pb-2">
                         <input
-                            className="text-sm focus:outline-none"
+                            className="w-full text-sm focus:outline-none"
                             type="email"
                             id="email"
                             value={email}
@@ -81,7 +81,7 @@ function SignUp() {
                     <FiUser size={20} className="text-gray-400 mr-4" />
                     <div className="flex flex-1 items-center border-b border-gray-200 pb-2">
                         <input
-                            className="text-sm focus:outline-none"
+                            className="text-sm w-full focus:outline-none"
                             type="text"
                             id="name"
                             value={name}
@@ -95,7 +95,7 @@ function SignUp() {
                     <FiLock size={20} className="text-gray-400 mr-4" />
                     <div className="flex flex-1 items-center border-b border-gray-200 pb-2">
                         <input
-                            className="flex-1 text-sm focus:outline-none"
+                            className="w-full flex-1 text-sm focus:outline-none"
                             type={showPassword ? "text" : "password"}
                             id="password"
                             value={password}
