@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
 import { FiAtSign, FiLock, FiEyeOff, FiEye } from "react-icons/fi";
-import { ReactComponent as GoogleIcon } from "../assets/svg/google.svg";
+import OAuth from "../components/OAuth";
 
 function SignIn() {
     const [showPassword, setShowPassword] = useState(false);
@@ -107,10 +107,7 @@ function SignIn() {
                 <span className="absolute w-full border-t border-gray-200 top-3"></span>
             </div>
 
-            <button className="relative py-3 w-full bg-gray-100 text-gray-500 text-sm font-semibold rounded-xl mb-12">
-                <GoogleIcon className="absolute w-6 top-2.5 left-8" />
-                Login with Google
-            </button>
+            <OAuth />
 
             <p className="text-sm text-center font-medium">
                 New User?{" "}

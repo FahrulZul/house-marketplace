@@ -9,6 +9,7 @@ import { setDoc, doc, serverTimestamp } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import { FiAtSign, FiLock, FiEyeOff, FiEye, FiUser } from "react-icons/fi";
 import { toast } from "react-toastify";
+import OAuth from "../components/OAuth";
 
 function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
@@ -62,7 +63,7 @@ function SignUp() {
         <div className="bg-white rounded-2xl ">
             <h1 className="text-gray-900 text-3xl font-bold mb-10">Sign up</h1>
 
-            <form className="mb-10" onSubmit={onSubmit}>
+            <form className="mb-6" onSubmit={onSubmit}>
                 <div className="flex items-start mb-5">
                     <FiAtSign size={20} className="text-gray-400 mr-4" />
                     <div className="flex flex-1 items-center border-b border-gray-200 pb-2">
@@ -122,6 +123,15 @@ function SignUp() {
                     Register
                 </button>
             </form>
+
+            <div className="relative w-full flex justify-center text-gray-400 mb-6">
+                <span className="block w-12 bg-white z-10 text-center font-medium">
+                    OR
+                </span>
+                <span className="absolute w-full border-t border-gray-200 top-3"></span>
+            </div>
+
+            <OAuth />
 
             <p className="text-sm text-center font-medium">
                 Joined us before?{" "}
