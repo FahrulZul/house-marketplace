@@ -58,13 +58,10 @@ function Category() {
     return (
         <div className="text-sm">
             <div className="relative mb-10">
-                <Link
-                    to="/"
-                    className="absolute inline-block shadow rounded-md p-2"
-                >
+                <Link to="/" className="absolute">
                     <FiChevronLeft size={25} className="text-zinc-600" />
                 </Link>
-                <h1 className="text-base font-medium text-center py-2">
+                <h1 className="text-base font-semibold text-center">
                     Place for {params.categoryName === "sale" ? "sale" : "rent"}
                 </h1>
             </div>

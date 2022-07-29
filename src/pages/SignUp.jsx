@@ -118,7 +118,7 @@ function SignUp() {
 
                 <button
                     type="submit"
-                    className="bg-blue-600 w-full text-sm font-semibold text-white py-3 rounded-xl"
+                    className="bg-indigo-600 w-full text-sm font-semibold text-white py-3 rounded-xl"
                 >
                     Register
                 </button>
@@ -135,7 +135,10 @@ function SignUp() {
 
             <p className="text-sm text-center font-medium">
                 Joined us before?{" "}
-                <Link to="/sign-in" className="text-sky-600 inline-block ml-1">
+                <Link
+                    to="/sign-in"
+                    className="text-indigo-600 inline-block ml-1"
+                >
                     Login
                 </Link>
             </p>

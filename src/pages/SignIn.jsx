@@ -87,14 +87,14 @@ function SignIn() {
 
                 <Link
                     to="/forgot-password"
-                    className="inline-block w-full text-sm text-right text-sky-600 font-medium mb-6"
+                    className="inline-block w-full text-sm text-right text-indigo-600 font-medium mb-6"
                 >
                     Forgot Password?
                 </Link>
 
                 <button
                     type="submit"
-                    className="bg-blue-600 w-full text-sm font-semibold text-white py-3 rounded-xl"
+                    className="bg-indigo-600 w-full text-sm font-semibold text-white py-3 rounded-xl"
                 >
                     Login
                 </button>
@@ -111,7 +111,10 @@ function SignIn() {
 
             <p className="text-sm text-center font-medium">
                 New User?{" "}
-                <Link to="/sign-up" className="text-sky-600 inline-block ml-1">
+                <Link
+                    to="/sign-up"
+                    className="text-indigo-600 inline-block ml-1"
+                >
                     Register
                 </Link>
             </p>

@@ -51,13 +51,13 @@ function ForgotPassword() {
 
                 <button
                     type="submit"
-                    className="bg-blue-600 w-full text-sm font-semibold text-white py-3 rounded-xl"
+                    className="bg-indigo-600 w-full text-sm font-semibold text-white py-3 rounded-xl"
                 >
                     Submit
                 </button>
             </form>
 
-            <Link to="/sign-in" className="text-sky-600 block text-center">
+            <Link to="/sign-in" className="text-indigo-600 block text-center">
                 Login again?
             </Link>
         </div>

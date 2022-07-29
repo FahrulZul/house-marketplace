@@ -12,7 +12,7 @@ function Navbar() {
     };
 
     return (
-        <div className="max-w-md bg-white rounded-t-3xl w-full fixed bottom-0 flex justify-evenly">
+        <div className="max-w-md bg-white rounded-t-3xl w-full fixed bottom-0 flex justify-evenly drop-shadow-2xl">
             <div
                 className={`flex flex-col w-14 duration-300 py-3 ${
                     pathMatchRoute("/")
@@ -37,7 +37,7 @@ function Navbar() {
                 <div className="flex justify-center mb-1">
                     <FiTag size={25} />
                 </div>
-                <p className="text-xs text-center">Offer</p>
+                <p className="text-xs text-center">Offers</p>
             </div>
             <div
                 className={`flex flex-col w-14 duration-300 py-3 ${

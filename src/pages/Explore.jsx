@@ -5,11 +5,13 @@ import rentCategoryImage from "../assets/svg/rent.svg";
 function Explore() {
     return (
         <div className="text-sm">
-            <h1 className="text-gray-900 text-3xl font-bold mb-10">Explore</h1>
+            <h1 className="text-gray-900 text-base font-semibold text-center mb-10">
+                Explore
+            </h1>
             <div className="flex">
                 <Link
                     to="/category/sale"
-                    className="flex-1 shadow-md rounded-xl p-4 mr-2"
+                    className="flex-1 shadow rounded-xl p-4 mr-2 bg-white"
                 >
                     <img
                         className="p-2 mb-2 h-28 w-full"
@@ -20,7 +22,7 @@ function Explore() {
                 </Link>
                 <Link
                     to="/category/rent"
-                    className="flex-1 shadow-md rounded-xl p-4 ml-2"
+                    className="flex-1 shadow rounded-xl p-4 ml-2 bg-white"
                 >
                     <img
                         className="p-2 mb-2 h-28 w-full"

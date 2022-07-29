@@ -10,13 +10,15 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Navbar from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute";
 import Category from "./pages/Category";
+import CreateListing from "./pages/CreateListing";
+import Listing from "./pages/Listing";
 
 function App() {
     return (
         <>
             <Router>
                 <div className="max-w-md mx-auto">
-                    <div className="container min-h-screen mx-auto p-8">
+                    <div className="container min-h-screen mx-auto p-8 pb-28 bg-zinc-50">
                         <Routes>
                             <Route path="/" element={<Explore />} />
                             <Route path="/offers" element={<Offers />} />
@@ -32,6 +34,14 @@ function App() {
                             <Route
                                 path="/forgot-password"
                                 element={<ForgotPassword />}
+                            />
+                            <Route
+                                path="/create-listing"
+                                element={<CreateListing />}
+                            />
+                            <Route
+                                path="/category/:categoryName/:listingId"
+                                element={<Listing />}
                             />
                         </Routes>
                     </div>
