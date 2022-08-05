@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import sellCategoryImage from "../assets/svg/sell.svg";
 import rentCategoryImage from "../assets/svg/rent.svg";
+import Slider from "../components/Slider";
 
 function Explore() {
     return (
@@ -8,7 +9,8 @@ function Explore() {
             <h1 className="text-gray-900 text-base font-semibold text-center mb-10">
                 Explore
             </h1>
-            <div className="flex">
+            <Slider />
+            <div className="flex mt-4">
                 <Link
                     to="/category/sale"
                     className="flex-1 shadow rounded-xl p-4 mr-2 bg-white"

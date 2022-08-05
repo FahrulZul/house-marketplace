@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Navigation, Pagination } from "swiper";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { doc, getDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { db } from "../firebase.config";
@@ -24,7 +30,7 @@ function Listing() {
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
-                console.log(docSnap.data());
+                // console.log(docSnap.data());
                 setListing(docSnap.data());
                 setLoading(false);
             } else {
@@ -42,17 +48,9 @@ function Listing() {
     return (
         <div className="text-sm">
             <div className="flex items-center justify-between mb-6">
-                <Link
-                    to={
-                        listing.offer
-                            ? "/offers"
-                            : listing.type === "rent"
-                            ? "/category/rent"
-                            : "/category/sale"
-                    }
-                >
+                <div onClick={() => navigate(-1)}>
                     <FiChevronLeft size={25} className="text-zinc-600" />
-                </Link>
+                </div>
 
                 <p className="inline-block text-base font-bold bg-white shadow px-2 py-1 rounded">
                     RM
@@ -89,7 +87,27 @@ function Listing() {
                 </div>
             </div>
 
-            <div className="w-full h-52 bg-zinc-200 rounded-lg mb-4"></div>
+            <div className="w-full h-52 bg-zinc-200 rounded-lg mb-4 overflow-hidden">
+                <Swiper
+                    modules={[Navigation, Pagination]}
+                    navigation
+                    pagination={{ clickable: true }}
+                    speed={800}
+                    slidesPerView={1}
+                    loop
+                    className="w-full h-full"
+                >
+                    {listing.imageUrls.map((url, index) => (
+                        <SwiperSlide key={index}>
+                            <img
+                                className="w-full h-full object-cover"
+                                src={url}
+                                alt="Houses"
+                            />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
 
             <div className="mb-8">
                 <h2 className="text-xl font-medium mb-2">{listing.name}</h2>
@@ -97,9 +115,18 @@ function Listing() {
                     <p className="bg-emerald-500 text-zinc-50 font-medium w-fit inline-block px-2 py-1 rounded-lg shadow mr-3">
                         For {listing.type === "rent" ? "rent" : "sale"}
                     </p>
-                    <p className="bg-orange-500 text-zinc-50 font-medium w-fit inline-block px-2 py-1 rounded-lg shadow">
-                        RM 400 discount
-                    </p>
+                    {listing.offer && (
+                        <p className="bg-orange-500 text-zinc-50 font-medium w-fit inline-block px-2 py-1 rounded-lg shadow">
+                            {`RM ${(
+                                listing.regularPrice - listing.discountedPrice
+                            )
+                                .toString()
+                                .replace(
+                                    /\B(?=(\d{3})+(?!\d))/g,
+                                    ","
+                                )} discount`}
+                        </p>
+                    )}
                 </div>
                 <div className="flex items-start text-zinc-400">
                     <FiMapPin size={30} className="mr-3 " />
@@ -107,7 +134,7 @@ function Listing() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-4 gap-3 mb-8">
+            <div className="grid grid-cols-4 gap-3 mb-10">
                 <div className="flex flex-col items-center">
                     <div className="text-indigo-500 bg-zinc-100 p-3 rounded-full shadow mb-2">
                         <BiBed size={22} />
@@ -154,6 +181,30 @@ function Listing() {
                 )}
             </div>
 
+            <div className="h-52 w-full mb-10 rounded-lg overflow-hidden z-0 relative">
+                <MapContainer
+                    style={{ height: "100%", width: "100%" }}
+                    center={[listing.geolocation.lat, listing.geolocation.lng]}
+                    zoom={13}
+                    scrollWheelZoom={false}
+                >
+                    <TileLayer
+                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        url="https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png"
+                    />
+
+                    <Marker
+                        style={{ color: "red" }}
+                        position={[
+                            listing.geolocation.lat,
+                            listing.geolocation.lng,
+                        ]}
+                    >
+                        <Popup>{listing.location}</Popup>
+                    </Marker>
+                </MapContainer>
+            </div>
+
             {auth.currentUser.uid !== listing.userRef && (
                 <Link
                     to={`/contact/${listing.userRef}?listingName=${listing.name}&listingPage=${location.pathname}`}
@@ -167,3 +218,5 @@ function Listing() {
 }
 
 export default Listing;
+
+// https://stackoverflow.com/questions/67552020/how-to-fix-error-failed-to-compile-node-modules-react-leaflet-core-esm-pat

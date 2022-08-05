@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { getAuth, updateProfile, updateEmail } from "firebase/auth";
+import { getAuth, updateProfile } from "firebase/auth";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FiDollarSign, FiChevronRight, FiLogOut } from "react-icons/fi";
+import { BsHouse } from "react-icons/bs";
 
 function Profile() {
     const auth = getAuth();
@@ -124,6 +125,17 @@ function Profile() {
                 <div className="flex items-center">
                     <FiDollarSign size={16} className="mr-3 text-indigo-600" />
                     <span>Sell or rent your home</span>
+                </div>
+                <FiChevronRight size={17} />
+            </Link>
+
+            <Link
+                to={`/user-listings`}
+                className="shadow bg-white rounded-md px-3 py-3 flex justify-between items-center mb-3"
+            >
+                <div className="flex items-center">
+                    <BsHouse size={16} className="mr-3 text-indigo-600" />
+                    <span>Your Listings</span>
                 </div>
                 <FiChevronRight size={17} />
             </Link>

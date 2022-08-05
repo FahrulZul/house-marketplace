@@ -16,4 +16,27 @@
         border-radius: 0.75rem;
         margin-right: 1rem;
     }
+
+    .swiper-pagination-bullet {
+        background-color: #52525b !important;
+    }
+
+    .swiper-button-prev {
+        background-image: url("./assets/svg/left.svg");
+    }
+    .swiper-button-next {
+        background-image: url("./assets/svg/right.svg");
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+        display: none;
+    }
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { toast } from "react-toastify";
@@ -11,6 +11,7 @@ function Contact() {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const param = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getLandLord = async () => {
@@ -34,9 +35,9 @@ function Contact() {
     return (
         <div className="text-sm">
             <div className="relative mb-10">
-                <Link to={searchParams.get("listingPage")} className="absolute">
+                <div onClick={() => navigate(-1)} className="absolute">
                     <FiChevronLeft size={25} className="text-zinc-600" />
-                </Link>
+                </div>
                 <h1 className="text-base font-semibold text-center">Contact</h1>
             </div>
             {landlord !== null && (

@@ -13,13 +13,15 @@ import Category from "./pages/Category";
 import CreateListing from "./pages/CreateListing";
 import Listing from "./pages/Listing";
 import Contact from "./pages/Contact";
+import UserListings from "./pages/UserListings";
+import EditListing from "./pages/EditListing";
 
 function App() {
     return (
         <>
             <Router>
-                <div className="max-w-md mx-auto">
-                    <div className="container min-h-screen mx-auto p-8 pb-28 bg-zinc-50">
+                <div className="relative max-w-md mx-auto">
+                    <div className="container min-h-screen mx-auto p-8 pb-28 bg-white">
                         <Routes>
                             <Route path="/" element={<Explore />} />
                             <Route path="/offers" element={<Offers />} />
@@ -47,6 +49,14 @@ function App() {
                             <Route
                                 path="/contact/:landlordId"
                                 element={<Contact />}
+                            />
+                            <Route
+                                path="/user-listings"
+                                element={<UserListings />}
+                            />
+                            <Route
+                                path="/edit-listing/:listingId"
+                                element={<EditListing />}
                             />
                         </Routes>
                     </div>

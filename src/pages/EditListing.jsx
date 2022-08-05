@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
     getStorage,
@@ -7,17 +7,18 @@ import {
     uploadBytesResumable,
     getDownloadURL,
 } from "firebase/storage";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { doc, getDoc, updateDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { v4 as uuidv4 } from "uuid";
 import { FiChevronLeft } from "react-icons/fi";
 import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
 
-function CreateListing() {
+function EditListing() {
     //eslint-disable-next-line
     const [geolocationEnabled, setGeolocationEnabled] = useState(true);
     const [loading, setLoading] = useState(false);
+    const [listing, setListing] = useState(null);
     const [formData, setFormData] = useState({
         type: "rent",
         name: "",
@@ -52,7 +53,33 @@ function CreateListing() {
 
     const auth = getAuth();
     const navigate = useNavigate();
+    const params = useParams();
     const isMounted = useRef(true);
+
+    useEffect(() => {
+        if (listing && listing.userRef !== auth.currentUser.uid) {
+            toast.error("You can not edit that listing");
+            navigate("/");
+        }
+    });
+
+    useEffect(() => {
+        setLoading(true);
+        const fetchListing = async () => {
+            const docRef = doc(db, "listings", params.listingId);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                setListing(docSnap.data());
+                setFormData({
+                    ...docSnap.data(),
+                    address: docSnap.data().location,
+                });
+                setLoading(false);
+            }
+        };
+
+        fetchListing();
+    }, [params.listingId]);
 
     useEffect(() => {
         if (isMounted) {
@@ -181,9 +208,10 @@ function CreateListing() {
         location && (formDataCopy.location = location);
         !formDataCopy.offer && delete formDataCopy.discountedPrice;
 
-        const docRef = await addDoc(collection(db, "listings"), formDataCopy);
+        const docRef = doc(db, "listings", params.listingId);
+        await updateDoc(docRef, formDataCopy);
         setLoading(false);
-        toast.success("Listing Saved");
+        toast.success("Listing has been updated");
         navigate(`/category/${formDataCopy.type}/${docRef.id}`);
     };
 
@@ -219,11 +247,11 @@ function CreateListing() {
     return (
         <div className="text-sm">
             <div className="relative mb-10">
-                <Link to="/profile" className="absolute">
+                <Link to="/user-listings" className="absolute">
                     <FiChevronLeft size={25} className="text-zinc-600" />
                 </Link>
                 <h1 className="text-base font-semibold text-center">
-                    Create Listing
+                    Edit Listing
                 </h1>
             </div>
 
@@ -466,11 +494,11 @@ function CreateListing() {
                     type="submit"
                     className="bg-indigo-700 w-full text-sm font-semibold text-white py-3 rounded-xl"
                 >
-                    Create Listing
+                    Update Listing
                 </button>
             </form>
         </div>
     );
 }
 
-export default CreateListing;
+export default EditListing;

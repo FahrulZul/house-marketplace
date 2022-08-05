@@ -12,7 +12,7 @@ function Navbar() {
     };
 
     return (
-        <div className="max-w-md bg-white rounded-t-3xl w-full fixed bottom-0 flex justify-evenly drop-shadow-2xl">
+        <div className="max-w-md bg-white rounded-t-3xl w-full fixed z-10 bottom-0 flex justify-evenly drop-shadow-2xl">
             <div
                 className={`flex flex-col w-14 duration-300 py-3 ${
                     pathMatchRoute("/")
