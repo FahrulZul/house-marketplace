@@ -205,7 +205,7 @@ function Listing() {
                 </MapContainer>
             </div>
 
-            {auth.currentUser.uid !== listing.userRef && (
+            {auth.currentUser?.uid !== listing.userRef && (
                 <Link
                     to={`/contact/${listing.userRef}?listingName=${listing.name}&listingPage=${location.pathname}`}
                     className="text-zinc-50 bg-indigo-600 w-full py-2 text-center font-semibold rounded-lg inline-block"
