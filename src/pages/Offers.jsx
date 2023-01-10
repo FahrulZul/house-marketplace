@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import {
     collection,
     getDocs,
@@ -11,7 +10,6 @@ import {
 import { db } from "../firebase.config";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
-import { FiChevronLeft } from "react-icons/fi";
 import ListingsItem from "../components/ListingsItem";
 
 function Offers() {
