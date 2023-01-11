@@ -21,7 +21,7 @@ function App() {
         <>
             <Router>
                 <div className="relative max-w-md mx-auto">
-                    <div className="container min-h-screen mx-auto p-8 pb-28 bg-white">
+                    <div className="container min-h-screen mx-auto px-6 py-8 pb-28 bg-white">
                         <Routes>
                             <Route path="/" element={<Explore />} />
                             <Route path="/offers" element={<Offers />} />

@@ -141,7 +141,7 @@ function Profile() {
             </Link>
 
             <div
-                className="shadow bg-white rounded-md px-3 py-3 flex justify-between items-center"
+                className="cursor-pointer shadow bg-white rounded-md px-3 py-3 flex justify-between items-center"
                 onClick={onLogOut}
             >
                 <div className="flex items-center">

@@ -17,7 +17,7 @@ function ListingsItem({ id, data, onDelete, onEdit }) {
                 <div className="absolute top-3 right-3 flex">
                     {onDelete && (
                         <div
-                            className="bg-white rounded-full shadow text-red-600 p-1 mr-1"
+                            className="cursor-pointer bg-white rounded-full shadow text-red-600 p-1 mr-1"
                             style={{ background: "rgba(255, 255, 255, 0.8" }}
                             onClick={() => onDelete(id, data.name)}
                         >
@@ -26,7 +26,7 @@ function ListingsItem({ id, data, onDelete, onEdit }) {
                     )}
                     {onEdit && (
                         <div
-                            className="bg-white rounded-full shadow text-blue-600 p-1 mr-1"
+                            className="cursor-pointer bg-white rounded-full shadow text-blue-600 p-1 mr-1"
                             style={{ background: "rgba(255, 255, 255, 0.8" }}
                             onClick={() => onEdit(id)}
                         >
