@@ -17,7 +17,7 @@ const ShareButton = () => {
         >
             <FiShare2 size={20} />
             {shareLinkCopied && (
-                <p className="absolute right-full w-20 top-1 text-xs">
+                <p className="absolute left-full w-20 top-1 text-xs">
                     Link Copied!
                 </p>
             )}
