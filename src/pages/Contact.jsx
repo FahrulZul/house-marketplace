@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { toast } from "react-toastify";
-import { FiChevronLeft } from "react-icons/fi";
-import BackButton from "../components/ui/BackButton";
+import BackButton from "../components/uiComponents/BackButton";
 
 function Contact() {
     const [message, setMessage] = useState("");
@@ -12,7 +11,6 @@ function Contact() {
     const [searchParams, setSearchParams] = useSearchParams();
 
     const param = useParams();
-    const navigate = useNavigate();
 
     useEffect(() => {
         const getLandLord = async () => {

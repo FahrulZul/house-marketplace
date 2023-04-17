@@ -12,7 +12,7 @@ import { db } from "../firebase.config";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 import ListingsItem from "../components/listing/ListingsItem";
-import BackButton from "../components/ui/BackButton";
+import BackButton from "../components/uiComponents/BackButton";
 
 function Category() {
     const [loading, setLoading] = useState(true);

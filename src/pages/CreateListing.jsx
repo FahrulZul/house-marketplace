@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
     getStorage,
@@ -10,10 +10,9 @@ import {
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { v4 as uuidv4 } from "uuid";
-import { FiChevronLeft } from "react-icons/fi";
 import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
-import BackButton from "../components/ui/BackButton";
+import BackButton from "../components/uiComponents/BackButton";
 
 function CreateListing() {
     //eslint-disable-next-line

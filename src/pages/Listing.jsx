@@ -10,10 +10,10 @@ import { doc, getDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { db } from "../firebase.config";
 import Spinner from "../components/Spinner";
-import BackButton from "../components/ui/BackButton";
+import BackButton from "../components/uiComponents/BackButton";
 import { discountPrice, formatPrice } from "../utils/utils";
 import ListingPerks from "../components/listing/ListingPerks";
-import ShareButton from "../components/ui/ShareButton";
+import ShareButton from "../components/uiComponents/ShareButton";
 
 function Listing() {
     const [loading, setLoading] = useState(true);

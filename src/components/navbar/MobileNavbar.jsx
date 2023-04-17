@@ -1,5 +1,5 @@
 import { FiUser, FiCompass, FiTag } from "react-icons/fi";
-import NavbarButton from "../ui/NavbarButton";
+import NavbarButton from "../uiComponents/NavbarButton";
 
 function MobileNavbar() {
     return (

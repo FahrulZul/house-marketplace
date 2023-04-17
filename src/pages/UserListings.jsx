@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FiChevronLeft } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import {
     collection,
     deleteDoc,
@@ -16,7 +15,7 @@ import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
 import { useAuthStatus } from "../hooks/useAuthStatus";
 import ListingsItem from "../components/listing/ListingsItem";
-import BackButton from "../components/ui/BackButton";
+import BackButton from "../components/uiComponents/BackButton";
 
 function UserListings() {
     const [listings, setListings] = useState(null);
