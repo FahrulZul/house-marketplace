@@ -7,7 +7,7 @@ import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import ForgotPassword from "./pages/ForgotPassword";
-import Navbar from "./components/Navbar";
+import MobileNavbar from "./components/navbar/MobileNavbar";
 import PrivateRoute from "./components/PrivateRoute";
 import Category from "./pages/Category";
 import CreateListing from "./pages/CreateListing";
@@ -15,13 +15,15 @@ import Listing from "./pages/Listing";
 import Contact from "./pages/Contact";
 import UserListings from "./pages/UserListings";
 import EditListing from "./pages/EditListing";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
     return (
         <>
             <Router>
-                <div className="relative max-w-md mx-auto">
-                    <div className="container min-h-screen mx-auto px-6 py-8 pb-28 bg-white">
+                <Navbar />
+                <div className="relative w-full mx-auto px-6">
+                    <div className="max-w-6xl mx-auto py-8 pb-28 bg-white">
                         <Routes>
                             <Route path="/" element={<Explore />} />
                             <Route path="/offers" element={<Offers />} />
@@ -60,8 +62,8 @@ function App() {
                             />
                         </Routes>
                     </div>
-                    <Navbar />
                 </div>
+                <MobileNavbar />
             </Router>
             <ToastContainer />
         </>

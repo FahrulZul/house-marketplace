@@ -13,6 +13,7 @@ import { v4 as uuidv4 } from "uuid";
 import { FiChevronLeft } from "react-icons/fi";
 import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
+import BackButton from "../components/ui/BackButton";
 
 function CreateListing() {
     //eslint-disable-next-line
@@ -218,16 +219,17 @@ function CreateListing() {
 
     return (
         <div className="text-sm">
-            <div className="relative mb-10">
-                <Link to="/profile" className="absolute">
-                    <FiChevronLeft size={25} className="text-zinc-600" />
-                </Link>
-                <h1 className="text-base font-semibold text-center">
+            <div className="flex items-center mb-10">
+                <BackButton />
+                <h1 className="text-base w-full font-semibold text-center -translate-x-7 sm:-translate-x-5">
                     Create Listing
                 </h1>
             </div>
 
-            <form onSubmit={onSubmit}>
+            <form
+                className="sm:max-w-2xl mx-auto sm:border-2 border-gray-100 rounded-2xl sm:p-8"
+                onSubmit={onSubmit}
+            >
                 <label className="block mb-2">Sell / Rent</label>
                 <div className="mb-4">
                     <button

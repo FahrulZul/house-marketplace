@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import sellCategoryImage from "../assets/svg/sell.svg";
 import rentCategoryImage from "../assets/svg/rent.svg";
-import Slider from "../components/Slider";
+import Slider from "../components/ui/Slider";
 
 function Explore() {
     return (
@@ -10,21 +10,21 @@ function Explore() {
                 Explore
             </h1>
             <Slider />
-            <div className="flex mt-4">
+            <div className="flex gap-4 sm:gap-8 ">
                 <Link
                     to="/category/sale"
-                    className="flex-1 shadow rounded-xl p-4 mr-2 bg-white"
+                    className="flex-1 border-2 border-gray-50 rounded-xl p-4 bg-white hover:shadow transition-shadow ease-in-out duration-300"
                 >
                     <img
                         className="p-2 mb-2 h-28 w-full"
                         src={sellCategoryImage}
                         alt="House for sell"
                     />
-                    <p className=" text-center font-medium">For Sale</p>
+                    <p className=" text-center font-medium">For Sell</p>
                 </Link>
                 <Link
                     to="/category/rent"
-                    className="flex-1 shadow rounded-xl p-4 ml-2 bg-white"
+                    className="flex-1 border-2 border-gray-50 rounded-xl p-4 bg-white hover:shadow transition-shadow ease-in-out duration-300"
                 >
                     <img
                         className="p-2 mb-2 h-28 w-full"

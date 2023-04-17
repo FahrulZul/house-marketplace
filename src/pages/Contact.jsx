@@ -4,6 +4,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { toast } from "react-toastify";
 import { FiChevronLeft } from "react-icons/fi";
+import BackButton from "../components/ui/BackButton";
 
 function Contact() {
     const [message, setMessage] = useState("");
@@ -34,14 +35,14 @@ function Contact() {
 
     return (
         <div className="text-sm">
-            <div className="relative mb-10">
-                <div onClick={() => navigate(-1)} className="absolute">
-                    <FiChevronLeft size={25} className="text-zinc-600" />
-                </div>
-                <h1 className="text-base font-semibold text-center">Contact</h1>
+            <div className="flex items-center mb-10">
+                <BackButton />
+                <h1 className="w-full text-base font-semibold text-center -translate-x-7 sm:-translate-x-5">
+                    Contact
+                </h1>
             </div>
             {landlord !== null && (
-                <div>
+                <div className="sm:max-w-lg mx-auto sm:border-2 sm:border-gray-100 sm: rounded-2xl sm:p-6">
                     <p className="mb-3">
                         <span className="font-medium">To:</span> {landlord.name}
                     </p>
@@ -70,7 +71,7 @@ function Contact() {
                         >
                             <button
                                 type="button"
-                                className="block text-zinc-50 bg-indigo-600 w-full py-2 text-center font-semibold rounded-lg"
+                                className="block text-zinc-50 bg-indigo-600 w-full py-3 text-center font-semibold rounded-lg"
                             >
                                 Send Message
                             </button>

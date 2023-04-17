@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
     collection,
     getDocs,
@@ -7,13 +7,12 @@ import {
     where,
     orderBy,
     limit,
-    startAfter,
 } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
-import { FiChevronLeft } from "react-icons/fi";
-import ListingsItem from "../components/ListingsItem";
+import ListingsItem from "../components/listing/ListingsItem";
+import BackButton from "../components/ui/BackButton";
 
 function Category() {
     const [loading, setLoading] = useState(true);
@@ -58,11 +57,9 @@ function Category() {
 
     return (
         <div className="text-sm">
-            <div className="relative mb-10">
-                <Link to="/" className="absolute">
-                    <FiChevronLeft size={25} className="text-zinc-600" />
-                </Link>
-                <h1 className="text-base font-semibold text-center">
+            <div className="flex items-center mb-10">
+                <BackButton />
+                <h1 className="w-full text-base font-semibold text-center -translate-x-7 sm:-translate-x-5">
                     Place for {params.categoryName === "sale" ? "sale" : "rent"}
                 </h1>
             </div>
@@ -70,7 +67,7 @@ function Category() {
             {loading ? (
                 <Spinner />
             ) : listings.length > 0 ? (
-                <div>
+                <div className="flex flex-col items-center gap-6 sm:flex-row sm:flex-nowrap">
                     {listings.map((listing) => (
                         <ListingsItem
                             key={listing.id}

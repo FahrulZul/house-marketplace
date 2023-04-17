@@ -60,7 +60,7 @@ function SignUp() {
     };
 
     return (
-        <div className="bg-white rounded-2xl ">
+        <div className="bg-white rounded-2xl sm:max-w-lg mx-auto sm:border-2 border-gray-100 sm:p-6">
             <h1 className="text-gray-900 text-3xl font-bold mb-10">Sign up</h1>
 
             <form className="mb-6" onSubmit={onSubmit}>

@@ -23,13 +23,13 @@ function ForgotPassword() {
     };
 
     return (
-        <div className="bg-white rounded-2xl text-sm">
+        <div className="bg-white rounded-2xl sm:max-w-lg mx-auto sm:border-2 sm:border-gray-100 sm:p-6">
             <h1 className="text-gray-900 text-3xl font-bold mb-3">
                 Forgot
                 <br />
                 Password?
             </h1>
-            <p className="mb-10">
+            <p className="mb-10 text-sm">
                 Don't worry it happen. Please enter the address associated with
                 your account.
             </p>
@@ -57,7 +57,10 @@ function ForgotPassword() {
                 </button>
             </form>
 
-            <Link to="/sign-in" className="text-indigo-600 block text-center">
+            <Link
+                to="/sign-in"
+                className="text-sm font-medium text-indigo-600 block text-center"
+            >
                 Login again?
             </Link>
         </div>

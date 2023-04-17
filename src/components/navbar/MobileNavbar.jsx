@@ -1,9 +1,9 @@
 import { FiUser, FiCompass, FiTag } from "react-icons/fi";
-import NavbarButton from "./UI/NavbarButton";
+import NavbarButton from "../ui/NavbarButton";
 
-function Navbar() {
+function MobileNavbar() {
     return (
-        <div className="max-w-md bg-white rounded-t-3xl w-full fixed z-10 bottom-0 flex justify-evenly drop-shadow-2xl">
+        <div className="bg-white rounded-t-3xl w-full fixed z-20 bottom-0 flex justify-evenly drop-shadow-2xl sm:hidden">
             <NavbarButton
                 icon={<FiCompass size={25} />}
                 path="/"
@@ -23,4 +23,4 @@ function Navbar() {
     );
 }
 
-export default Navbar;
+export default MobileNavbar;

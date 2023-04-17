@@ -1,12 +1,13 @@
 import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { db } from "../firebase.config";
+import { db } from "../../firebase.config";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Pagination } from "swiper";
 import "swiper/css/pagination";
-import Spinner from "./Spinner";
+import Spinner from "../Spinner";
+import { formatPrice } from "../../utils/utils";
 
 function Slider() {
     const [loading, setLoading] = useState(true);
@@ -45,7 +46,7 @@ function Slider() {
     }
 
     return (
-        <div className="w-full h-52 bg-zinc-200 rounded-lg mb-4 overflow-hidden">
+        <div className="w-full h-52 sm:h-96 bg-zinc-200 mb-4 sm:mb-8 rounded-xl overflow-hidden">
             <Swiper
                 modules={[Pagination]}
                 pagination={{ clickable: true }}
@@ -59,29 +60,37 @@ function Slider() {
                         key={id}
                         onClick={() => navigate(`/category/${data.type}/${id}`)}
                     >
-                        <div className="relative w-full h-full">
-                            <img src={data.imageUrls[0]} alt="Houses" />
+                        <div className="relative w-full h-full cursor-pointer">
+                            <img
+                                className="w-full h-full object-cover object-center"
+                                src={data.imageUrls[0]}
+                                alt="Houses"
+                            />
                             <div
-                                className=" absolute p-2 rounded-lg bottom-8 left-4 "
+                                className=" absolute px-4 py-2 rounded-lg bottom-8 left-4"
                                 style={{ background: "rgba(0,0,0,0.5)" }}
                             >
-                                <p className="left-4 text-gray-50 text-xl font-bold">
+                                <span className="text-xs text-white">
+                                    {data.type === "rent"
+                                        ? "For rent"
+                                        : "For Sale"}
+                                </span>
+                                <p className=" text-gray-50 text-xl sm:text-2xl font-bold mb-2">
                                     {data.name}
                                 </p>
-                                <p className="left-4 text-gray-50 text-base font-semibold">
+                                {data.offer && (
+                                    <p className="text-gray-400 text-sm line-through">
+                                        RM {formatPrice(data.regularPrice)}
+                                        {data.type === "rent" && (
+                                            <span>/month</span>
+                                        )}
+                                    </p>
+                                )}
+                                <p className=" text-gray-50 text-base font-semibold">
+                                    <span className="mr-1">RM</span>
                                     {data.offer
-                                        ? data.discountedPrice
-                                              .toString()
-                                              .replace(
-                                                  /\B(?=(\d{3})+(?!\d))/g,
-                                                  ","
-                                              )
-                                        : data.regularPrice
-                                              .toString()
-                                              .replace(
-                                                  /\B(?=(\d{3})+(?!\d))/g,
-                                                  ","
-                                              )}
+                                        ? formatPrice(data.discountedPrice)
+                                        : formatPrice(data.regularPrice)}
                                     {data.type === "rent" && (
                                         <span className="text-base text-zinc-50 font-normal">
                                             /month

@@ -255,7 +255,10 @@ function EditListing() {
                 </h1>
             </div>
 
-            <form onSubmit={onSubmit}>
+            <form
+                className="sm:max-w-2xl mx-auto sm:border-2 border-gray-100 rounded-2xl sm:p-8"
+                onSubmit={onSubmit}
+            >
                 <label className="block mb-2">Sell / Rent</label>
                 <div className="mb-4">
                     <button

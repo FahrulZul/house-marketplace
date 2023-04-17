@@ -10,7 +10,7 @@ import {
 import { db } from "../firebase.config";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
-import ListingsItem from "../components/ListingsItem";
+import ListingsItem from "../components/listing/ListingsItem";
 
 function Offers() {
     const [loading, setLoading] = useState(true);
@@ -59,7 +59,7 @@ function Offers() {
             {loading ? (
                 <Spinner />
             ) : listings.length > 0 ? (
-                <div>
+                <div className="flex flex-col items-center gap-6 sm:flex-row sm:flex-nowrap">
                     {listings.map((listing) => (
                         <ListingsItem
                             key={listing.id}

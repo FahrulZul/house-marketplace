@@ -15,7 +15,8 @@ import { getAuth } from "firebase/auth";
 import Spinner from "../components/Spinner";
 import { toast } from "react-toastify";
 import { useAuthStatus } from "../hooks/useAuthStatus";
-import ListingsItem from "../components/ListingsItem";
+import ListingsItem from "../components/listing/ListingsItem";
+import BackButton from "../components/ui/BackButton";
 
 function UserListings() {
     const [listings, setListings] = useState(null);
@@ -73,17 +74,15 @@ function UserListings() {
 
     return (
         <div className="text-sm">
-            <div className="relative mb-10">
-                <Link to="/profile" className="absolute">
-                    <FiChevronLeft size={25} className="text-zinc-600" />
-                </Link>
-                <h1 className="text-base font-semibold text-center">
+            <div className="flex items-center mb-10">
+                <BackButton />
+                <h1 className="text-base font-semibold w-full text-center -translate-x-7 sm:-translate-x-5">
                     Your Listings
                 </h1>
             </div>
 
             {listings?.length > 0 && (
-                <>
+                <div className="flex flex-col items-center gap-6 sm:flex-row sm:flex-nowrap">
                     {listings.map((listing) => (
                         <ListingsItem
                             key={listing.id}
@@ -93,7 +92,7 @@ function UserListings() {
                             onEdit={() => onEdit(listing.id)}
                         />
                     ))}
-                </>
+                </div>
             )}
         </div>
     );

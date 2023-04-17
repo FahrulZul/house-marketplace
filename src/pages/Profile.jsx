@@ -57,98 +57,109 @@ function Profile() {
                 Profile
             </h1>
 
-            <div className="flex justify-between mb-3">
-                <p className="font-medium">Personal Details</p>
-                <button
-                    className="font-medium text-indigo-600"
-                    onClick={() => {
-                        changeDetails && onSubmit();
-                        setChangeDetails((prevState) => !prevState);
-                    }}
+            <div className="sm:max-w-xl mx-auto sm:border-2 border-gray-100 rounded-xl sm:p-8">
+                <div className="flex justify-between mb-3">
+                    <p className="font-medium">Personal Details</p>
+                    <button
+                        className="font-medium text-indigo-600"
+                        onClick={() => {
+                            changeDetails && onSubmit();
+                            setChangeDetails((prevState) => !prevState);
+                        }}
+                    >
+                        {changeDetails ? "Save" : "Edit"}
+                    </button>
+                </div>
+
+                <form className="mb-10 p-3 rounded-lg shadow bg-white">
+                    <table className="border-collapse w-full">
+                        <tbody>
+                            <tr>
+                                <td className="pr-3 pb-2">
+                                    <label
+                                        className="font-medium"
+                                        htmlFor="name"
+                                    >
+                                        Name :
+                                    </label>
+                                </td>
+                                <td className="pb-2">
+                                    <input
+                                        className={`w-full px-2 py-1 border bg-white ${
+                                            changeDetails
+                                                ? "border-gray-200"
+                                                : "border-white"
+                                        } rounded focus:outline-indigo-200`}
+                                        type="text"
+                                        id="name"
+                                        value={name}
+                                        onChange={onChange}
+                                        disabled={!changeDetails}
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="pr-3">
+                                    <label
+                                        className="font-medium"
+                                        htmlFor="email"
+                                    >
+                                        Email :
+                                    </label>
+                                </td>
+                                <td>
+                                    <input
+                                        className={`w-full px-2 py-1 bg-white border ${
+                                            changeDetails
+                                                ? "border-gray-200"
+                                                : "border-white"
+                                        } rounded focus:outline-indigo-200`}
+                                        type="text"
+                                        id="email"
+                                        value={email}
+                                        onChange={onChange}
+                                        disabled={true}
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <Link
+                    to="/create-listing"
+                    className="shadow bg-white rounded-md px-3 py-3 flex justify-between items-center mb-3"
                 >
-                    {changeDetails ? "Save" : "Edit"}
-                </button>
-            </div>
+                    <div className="flex items-center">
+                        <FiDollarSign
+                            size={16}
+                            className="mr-3 text-indigo-600"
+                        />
+                        <span>Sell or rent your home</span>
+                    </div>
+                    <FiChevronRight size={17} />
+                </Link>
 
-            <form className="mb-10 p-3 rounded-lg shadow bg-white">
-                <table className="border-collapse w-full">
-                    <tbody>
-                        <tr>
-                            <td className="pr-3 pb-2">
-                                <label className="font-medium" htmlFor="name">
-                                    Name :
-                                </label>
-                            </td>
-                            <td className="pb-2">
-                                <input
-                                    className={`w-full px-2 py-1 border bg-white ${
-                                        changeDetails
-                                            ? "border-gray-200"
-                                            : "border-white"
-                                    } rounded focus:outline-indigo-200`}
-                                    type="text"
-                                    id="name"
-                                    value={name}
-                                    onChange={onChange}
-                                    disabled={!changeDetails}
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="pr-3">
-                                <label className="font-medium" htmlFor="email">
-                                    Email :
-                                </label>
-                            </td>
-                            <td>
-                                <input
-                                    className={`w-full px-2 py-1 bg-white border ${
-                                        changeDetails
-                                            ? "border-gray-200"
-                                            : "border-white"
-                                    } rounded focus:outline-indigo-200`}
-                                    type="text"
-                                    id="email"
-                                    value={email}
-                                    onChange={onChange}
-                                    disabled={true}
-                                />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-            <Link
-                to="/create-listing"
-                className="shadow bg-white rounded-md px-3 py-3 flex justify-between items-center mb-3"
-            >
-                <div className="flex items-center">
-                    <FiDollarSign size={16} className="mr-3 text-indigo-600" />
-                    <span>Sell or rent your home</span>
-                </div>
-                <FiChevronRight size={17} />
-            </Link>
+                <Link
+                    to={`/user-listings`}
+                    className="shadow bg-white rounded-md px-3 py-3 flex justify-between items-center mb-3"
+                >
+                    <div className="flex items-center">
+                        <BsHouse size={16} className="mr-3 text-indigo-600" />
+                        <span>Your Listings</span>
+                    </div>
+                    <FiChevronRight size={17} />
+                </Link>
 
-            <Link
-                to={`/user-listings`}
-                className="shadow bg-white rounded-md px-3 py-3 flex justify-between items-center mb-3"
-            >
-                <div className="flex items-center">
-                    <BsHouse size={16} className="mr-3 text-indigo-600" />
-                    <span>Your Listings</span>
+                <div
+                    className="cursor-pointer shadow bg-white rounded-md px-3 py-3 flex justify-between items-center"
+                    onClick={onLogOut}
+                >
+                    <div className="flex items-center">
+                        <FiLogOut size={16} className="mr-3 text-indigo-600" />
+                        <span>Logout</span>
+                    </div>
+                    <FiChevronRight size={17} />
                 </div>
-                <FiChevronRight size={17} />
-            </Link>
-
-            <div
-                className="cursor-pointer shadow bg-white rounded-md px-3 py-3 flex justify-between items-center"
-                onClick={onLogOut}
-            >
-                <div className="flex items-center">
-                    <FiLogOut size={16} className="mr-3 text-indigo-600" />
-                    <span>Logout</span>
-                </div>
-                <FiChevronRight size={17} />
             </div>
         </div>
     );
